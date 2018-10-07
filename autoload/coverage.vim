@@ -13,7 +13,7 @@ function! coverage#process_buffer(...) abort
   call coverage#utility#set_buffer(l:bufnr)
   let buffer_modified = coverage#utility#has_unsaved_changes()
   if !buffer_modified
-    let file = substitute(expand('#' . l:bufnr . ':p'), '/', '\')
+    let file = substitute(expand('#' . l:bufnr . ':p'), '/', '\', 'g')
     let modified_lines = coverage#get_coverage_lines(file)
 
     if g:coverage_show_covered
